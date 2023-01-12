@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+
+<style>
+    body{
+        background-color: whitesmoke;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+    }
+    .container{
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding-top: 10px;
+        border: 2px solid black;
+        height: 400px;
+        }
+        .btn{
+            width: 100px;
+            height: 30px;
+            
+        }
+        .items{
+            text-decoration: none;
+            background-color: red;
+             width: 100px;
+             
+        }
+</style>
+<body>
+    <h1>Js Devops!</h1>
+    <section class="container">
+        <form  id="my-form" action="#" onsubmit="onsignup(event)" onmousedown="mouseDown()" onmouseup="mouseUp()">
+            <h1>Add user</h1>
+            <div class="msg"></div>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="username" id="name" required/>
+            </div>
+            <br/>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" required/>
+            </div>
+            <br/>
+            <input class="btn" type="submit" onmousedown="mouseDown()" onmouseup="mouseUp()" value="submit">
+        </form>
+        <ul id="users"></ul>
+        <!-- <ul class="items">
+            <li class="item">Item 1</li>
+            <li class="item">Item 2</li>
+            <li class="item">Item 3</li>
+        </ul> -->
+    </section>
+  
+
+    <script>
+    // const btn = document.querySelector('.btn');
+    
+    // btn.addEventListener('mouseout', (e) =>{
+    //     e.preventDefault();
+    //     document.querySelector('#my-form').style.background = 'red';
+    // })
+  
+    const myform = document.querySelector('#my-form');
+    const nameinput = document.querySelector('#name');
+    const emailinput = document.querySelector('#email');
+    const msg = document.querySelector('.msg');
+    const userlist = document.querySelector('#users');
+
+    function mouseDown(){
+         myform.style.color="red";
+    }
+    function mouseUp(){
+         myform.style.color="green";
+    }
+
+    myform.addEventListener('submit', onsubmit);
+
+    function onsubmit(e){
+        e.preventDefault();
+        if(nameinput.value===""||emailinput.value===""){
+            msg.classList.add('error');
+            msg.innerHTML = "Please Enter all Fields";
+           
+            setTimeout(() => msg.remove(), 3000);
+        }else{
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(`${nameinput.value}:${emailinput.value}`));
+
+            userlist.appendChild(li);
+
+            nameinput.value="";
+            emailinput.value="";
+        }
+    }
+
+    function onsignup(event){
+        event.preventDefault();
+        console.log(event.target.username.value);
+        console.log(event.target.email.value);
+        
+    }
+    
+    </script>
+
+</body>
+</html>
