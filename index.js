@@ -11,5 +11,14 @@ console.log(additem[0])
 additem[0].style.fontWeight='bold';
 additem[0].style.color='green';
 
+const items = document.getElementsByClassName('list-group-item');
+console.log(items[1]);
+items[1].textContent='hello2';
+items[2].style.backgroundColor="green";
+
+for(let i=0;i<items.length;i++){
+    items[i].style.fontWeight="bold";
+}
+
 
 
