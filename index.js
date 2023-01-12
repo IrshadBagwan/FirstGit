@@ -20,5 +20,21 @@ for(let i=0;i<items.length;i++){
     items[i].style.fontWeight="bold";
 }
 
+const list = document.getElementsByClassName('listGroup');
+console.log(list)
+list[0].textContent="new element edited with class and tag name";
+list[0].style.fontWeight='bold';
+list[0].style.display='block';
+list[0].style.border='1px solid rgba(0,0,0,.125)';
+list[0].style.padding='0.75rem 1.25rem';
+list[0].style.margin.bottom='-1px';
+
+const li = document.getElementsByTagName('li');
+console.log(li);
+li[4].textContent="new element edited with class and tag name";
+li[4].style.fontWeight='bold';
+li[4].style.display='block';
+li[4].style.border='1px solid rgba(0,0,0,.125)';
+li[4].style.padding='0.75rem 1.25rem';
 
 
