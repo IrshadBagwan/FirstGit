@@ -38,3 +38,20 @@ li[4].style.border='1px solid rgba(0,0,0,.125)';
 li[4].style.padding='0.75rem 1.25rem';
 
 
+const item2 = document.querySelector(".list-group-item:nth-child(2)");
+item2.style.backgroundColor="green";
+item2.style.color="green";
+
+const item3 = document.querySelector(".list-group-item:nth-child(3)");
+item3.style.display="none";
+
+const odd=document.querySelectorAll('li:nth-child(odd)');
+console.log(odd)
+for(let i=0;i<odd.length;i++){
+   odd[i].style.backgroundColor="green";
+}
+   
+ 
+
+
+
