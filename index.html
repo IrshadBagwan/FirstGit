@@ -13,15 +13,17 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+      
         
     }
     .container{
-        justify-content: center;
+        
         align-items: center;
         text-align: center;
         padding-top: 10px;
         border: 2px solid black;
         height: 400px;
+        
         }
         .btn{
             width: 100px;
@@ -51,7 +53,7 @@
                 <input type="text" name="email" id="email" required/>
             </div>
             <br/>
-            <input class="btn" type="submit" onmousedown="mouseDown()" onmouseup="mouseUp()" value="submit">
+            <input class="btn" type="submit" onmousedown="mouseDown()" onmouseup="mouseUp()" value="submit" onclick="test()">
         </form>
         <ul id="users"></ul>
         <!-- <ul class="items">
@@ -98,6 +100,8 @@
 
             userlist.appendChild(li);
 
+           
+
             nameinput.value="";
             emailinput.value="";
         }
@@ -108,6 +112,21 @@
         console.log(event.target.username.value);
         console.log(event.target.email.value);
         
+    }
+
+    // localStorage.setItem('nameinput.value','emailinput.value');
+    
+    // console.log(localStorage.getItem('name'));
+
+    function test(){
+        const username = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+
+        const user = localStorage.setItem('username',username);
+        const em = localStorage.setItem('em',email);
+        console.log(user)
+
+
     }
     
     </script>
