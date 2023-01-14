@@ -106,7 +106,7 @@
             emailinput.value="";
         }
     }
-
+    
     function onsignup(event){
         event.preventDefault();
         console.log(event.target.username.value);
@@ -122,12 +122,26 @@
         const username = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         
-        let myobj = {
-            name: username,
-            ema : email
-        };
-        let my_obj = JSON.stringify(myobj);
-        localStorage.setItem('myobj',my_obj);
+        // let myobj = {
+        //     name: username,
+        //     ema : email
+        // };
+
+        let user_records = new Array();
+        user_records=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+        if(user_records.some((v)=>{return v.email==email})){
+            alert("duplicate data");
+        }else{
+            user_records.push({
+              "name": username,
+              "email":email
+        })
+
+
+
+       localStorage.setItem("users",JSON.stringify(user_records));
+        }
+      
         
         // const user = localStorage.setItem('username',username);
         // const em = localStorage.setItem('em',email);
@@ -135,6 +149,7 @@
 
 
     }
+
     
     </script>
 
