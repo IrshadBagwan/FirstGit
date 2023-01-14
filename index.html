@@ -121,10 +121,17 @@
     function test(){
         const username = document.getElementById('name').value;
         const email = document.getElementById('email').value;
-
-        const user = localStorage.setItem('username',username);
-        const em = localStorage.setItem('em',email);
-        console.log(user)
+        
+        let myobj = {
+            name: username,
+            ema : email
+        };
+        let my_obj = JSON.stringify(myobj);
+        localStorage.setItem('myobj',my_obj);
+        
+        // const user = localStorage.setItem('username',username);
+        // const em = localStorage.setItem('em',email);
+        // console.log(user)
 
 
     }
