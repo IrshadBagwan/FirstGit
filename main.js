@@ -2,6 +2,7 @@ const form = document.getElementById('addForm');
 const itemlist = document.getElementById('items');
 const filter = document.getElementById('filter');
 
+
 form.addEventListener('submit',addItem);
 
 itemlist.addEventListener('click', removeItem);
@@ -15,6 +16,7 @@ function addItem(e){
     e.preventDefault();
      // get input value
     const newItem = document.getElementById('item').value;
+    const item1 = document.getElementById('item1').value;
 
     // create li element
     const li = document.createElement('li');
@@ -22,7 +24,7 @@ function addItem(e){
     li.className = 'list-group-item';
      // Add text node with Input value
 
-     li.appendChild(document.createTextNode(newItem));
+     li.appendChild(document.createTextNode(newItem+item1));
 
      // create delete button element
      const deleteBtn = document.createElement('button');
@@ -40,7 +42,7 @@ function addItem(e){
 
      const edit = document.createElement('button');
      // edit Button
-     edit.className='btn btn-danger btn-sm float-right delete';
+     edit.className='btn btn-danger btn-sm float-right edit';
      //Append text Node
      edit.appendChild(document.createTextNode('Edit'));
 
@@ -61,3 +63,24 @@ function removeItem(e){
    }
 }
 
+
+//filter Items
+function filterItems(e){
+    // convert text to lowercase
+    const text = e.target.value.toLowerCase();
+    // Get list
+    const items = itemlist.getElementsByTagName('li');
+    // convert to an array
+    Array.from(items).forEach(function(item){
+          const itemName = item.firstChild.textContent;
+          if(itemName.toLocaleLowerCase().indexOf(text) != -1){
+              item.style.display='block';
+
+          }else{
+              item.style.display='none';
+          }
+    });
+
+
+
+}
