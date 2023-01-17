@@ -95,10 +95,33 @@
            
             setTimeout(() => msg.remove(), 3000);
         }else{
-            const li = document.createElement('li');
-            li.appendChild(document.createTextNode(`${nameinput.value}:${emailinput.value}`));
+            
+           
+            let user_records = new Array();
+            user_records=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+            if(user_records){
+                for(let i=0;i<user_records.length;i++){
+                    const li = document.createElement('li');
+                    li.appendChild(document.createTextNode(user_records[i].name));
+                }
+            }
+            // li.appendChild(document.createTextNode(localStorage.getItem('users')));
+
+
+
+            //create delete btn:
+            const deleteButton = document.createElement('button');
+            deleteButton.className='del';
+            deleteButton.appendChild(document.createTextNode('Delete'));
+
+            deleteButton.style.backgroundColor="red";
+
+            li.appendChild(deleteButton);
 
             userlist.appendChild(li);
+            let retrivedata =JSON.parse(localStorage.getItem('users'));
+            console.log(retrivedata);
+            
 
            
 
@@ -107,7 +130,11 @@
         }
     }
     
-    function onsignup(event){
+
+   
+   
+   
+     function onsignup(event){
         event.preventDefault();
         console.log(event.target.username.value);
         console.log(event.target.email.value);
@@ -140,6 +167,7 @@
 
 
        localStorage.setItem("users",JSON.stringify(user_records));
+       
         }
       
         
@@ -148,6 +176,19 @@
         // console.log(user)
 
 
+    }
+
+   userlist.addEventListener('click',del);
+
+    function del(e){
+          console.log(e.target.classList.contains('del'));{
+              if(confirm('Are you sure')){
+                  const li = e.target.parentElement;
+
+                  userlist.remove(li);
+                  localStorage.removeItem('users');
+              }
+          }
     }
 
     
